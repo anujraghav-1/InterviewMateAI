@@ -1,4 +1,8 @@
 
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +18,11 @@ body {
 .app {
   min-height: 100vh;
 }
+
+
+/* =========================================
+   NAVBAR
+========================================= */
 
 .navbar {
   height: 75px;
@@ -37,6 +46,11 @@ body {
   color: #a5b4fc;
   font-size: 14px;
 }
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
 
 .hero {
   min-height: calc(100vh - 130px);
@@ -71,6 +85,11 @@ body {
   max-width: 550px;
 }
 
+
+/* =========================================
+   INTERVIEW CONFIGURATION CARD
+========================================= */
+
 .interview-card {
   background: #151d32;
   border: 1px solid #293550;
@@ -103,7 +122,18 @@ body {
   background: #0e1629;
   color: white;
   font-size: 15px;
+  outline: none;
+  cursor: pointer;
 }
+
+.interview-card select:focus {
+  border-color: #8879ff;
+}
+
+
+/* =========================================
+   START INTERVIEW BUTTON
+========================================= */
 
 .start-button {
   width: 100%;
@@ -116,11 +146,97 @@ body {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .start-button:hover {
   background: #8879ff;
+  transform: translateY(-2px);
 }
+
+.start-button:active {
+  transform: translateY(0);
+}
+
+.start-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =========================================
+   GENERATED INTERVIEW QUESTION
+========================================= */
+
+.question-box {
+  margin-top: 25px;
+  padding: 22px;
+  background: #0e1629;
+  border: 1px solid #7565ee;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.question-label {
+  display: block;
+  color: #a5b4fc;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.question-box h3 {
+  color: #f8fafc;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.question-box p {
+  color: #a5aec3;
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error-message {
+  color: #ff7777 !important;
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 15px;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
   text-align: center;
@@ -129,16 +245,100 @@ footer {
   font-size: 13px;
 }
 
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
 @media (max-width: 600px) {
   .navbar {
     padding: 0 5%;
+  }
+
+  .navbar h2 {
+    font-size: 21px;
   }
 
   .nav-tag {
     font-size: 11px;
   }
 
+  .hero {
+    padding: 40px 18px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
   .interview-card {
     padding: 22px;
   }
+
+  .question-box {
+    padding: 17px;
+  }
+
+  .question-box h3 {
+    font-size: 16px;
+  }
+}
+
+
+
+/* =========================================
+   ANSWER INPUT SECTION
+========================================= */
+
+.answer-section {
+  margin-top: 25px;
+}
+
+.answer-section label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.answer-section textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 9px;
+  border: 1px solid #35415c;
+  background: #0e1629;
+  color: #f8fafc;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+}
+
+.answer-section textarea:focus {
+  border-color: #8879ff;
+}
+
+.answer-section textarea::placeholder {
+  color: #78839b;
+}
+
+/* =========================================
+   END INTERVIEW BUTTON
+========================================= */
+
+.end-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  border: 1px solid #35415c;
+  border-radius: 8px;
+  background: transparent;
+  color: #a5aec3;
+  cursor: pointer;
+}
+
+.end-button:hover {
+  background: #202941;
+  color: white;
 }

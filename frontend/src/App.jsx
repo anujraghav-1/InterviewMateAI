@@ -1,70 +1,34 @@
-
 import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Interview from "./pages/Interview";
 import "./App.css";
 
 function App() {
-  const [topic, setTopic] = useState("DSA");
-  const [difficulty, setDifficulty] = useState("Easy");
+  const [interviewData, setInterviewData] = useState(null);
+
+  function handleStartInterview(data) {
+    setInterviewData(data);
+  }
+
+  function handleEndInterview() {
+    setInterviewData(null);
+  }
 
   return (
     <div className="app">
-      <nav className="navbar">
-        <h2>InterviewMate<span> AI</span></h2>
-        <div className="nav-tag">AI Interview Preparation</div>
-      </nav>
+      <Navbar />
 
-      <main className="hero">
-        <div className="hero-content">
-          <div className="eyebrow">
-            YOUR PERSONAL AI INTERVIEW COACH
-          </div>
+      {interviewData ? (
+        <Interview
+          interviewData={interviewData}
+          onEndInterview={handleEndInterview}
+        />
+      ) : (
+        <Home onStartInterview={handleStartInterview} />
+      )}
 
-          <h1>
-            Practice smarter.<br />
-            <span>Interview better.</span>
-          </h1>
-
-          <p className="description">
-            Prepare for technical interviews with AI-powered
-            questions, personalized feedback, and adaptive learning.
-          </p>
-
-          <div className="interview-card">
-            <h2>Configure your interview</h2>
-            <p>Customize your practice session to get started.</p>
-
-            <label htmlFor="topic">Interview Topic</label>
-            <select
-              id="topic"
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-            >
-              <option value="DSA">Data Structures & Algorithms</option>
-              <option value="OOP">Object-Oriented Programming</option>
-              <option value="DBMS">Database Management Systems</option>
-            </select>
-
-            <label htmlFor="difficulty">Difficulty Level</label>
-            <select
-              id="difficulty"
-              value={difficulty}
-              onChange={(e) => setDifficulty(e.target.value)}
-            >
-              <option value="Easy">Easy</option>
-              <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
-            </select>
-
-            <button className="start-button">
-              Start Interview →
-            </button>
-          </div>
-        </div>
-      </main>
-
-      <footer>
-        Built to help you become interview-ready.
-      </footer>
+      <footer>Built to help you become interview-ready.</footer>
     </div>
   );
 }
