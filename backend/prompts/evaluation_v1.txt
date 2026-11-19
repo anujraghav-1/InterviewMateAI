@@ -24,7 +24,14 @@ Evaluate whether the candidate covers the important concepts required to answer 
 Evaluate whether the explanation is understandable, logically structured, and sufficiently precise.
 
 4. Practical Application:
-Evaluate the candidate's ability to connect the concept to an appropriate programming or real-world use case when relevant to the question.
+Evaluate the candidate's ability to connect the concept to an appropriate programming or real-world use case.
+
+Follow these rules carefully:
+- First determine whether the interview question requires or invites practical application.
+- If practical application is relevant, evaluate the quality and correctness of the candidate's examples or use cases.
+- If the question is purely conceptual and does not require or invite practical application, do not penalize the candidate for omitting examples. Award 5/5 when no application is reasonably expected, and explain that this criterion was not applicable.
+- Do not invent practical application requirements that are not implied by the question.
+- Do not reward irrelevant or incorrect examples.
 
 SCORING GUIDELINES:
 
