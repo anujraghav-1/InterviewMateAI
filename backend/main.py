@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
+from backend.services.evaluation_service import evaluate_answer
 
 app = FastAPI(title="InterviewMate AI API")
 
@@ -18,6 +19,13 @@ app.add_middleware(
 class QuestionRequest(BaseModel):
     topic: str
     difficulty: str
+
+
+class EvaluationRequest(BaseModel):
+    question: str
+    topic: str
+    difficulty: str
+    answer: str
 
 
 QUESTIONS = {
@@ -104,3 +112,25 @@ def generate_question(request: QuestionRequest):
         "question": question,
         "prompt_version": "static_v1"
     }
+
+@app.post("/interview/evaluate")
+def evaluate_interview_answer(request: EvaluationRequest):
+
+    if not request.answer.strip():
+        return {"error": "Answer cannot be empty."}
+
+    try:
+        evaluation = evaluate_answer(
+            question=request.question,
+            topic=request.topic,
+            difficulty=request.difficulty,
+            answer=request.answer
+        )
+
+        return evaluation
+
+    except Exception as e:
+        print("Evaluation error:", str(e))
+        return {
+            "error": "Unable to evaluate answer. Please try again."
+        }
