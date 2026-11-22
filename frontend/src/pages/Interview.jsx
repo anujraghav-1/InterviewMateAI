@@ -2,10 +2,7 @@
 import { useState } from "react";
 import QuestionCard from "../components/QuestionCard";
 import AnswerBox from "../components/AnswerBox";
-import {
-  evaluateAnswer,
-  generateQuestion,
-} from "../services/interviewApi";
+import { evaluateAnswer, generateQuestion } from "../services/InterviewAPI";
 
 const TOTAL_QUESTIONS = 5;
 

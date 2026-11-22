@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { generateQuestion } from "../services/interviewApi";
+import { generateQuestion } from "../services/InterviewAPI";
 
 function Home({ onStartInterview }) {
   const [topic, setTopic] = useState("DSA");
