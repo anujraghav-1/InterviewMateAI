@@ -1,0 +1,189 @@
+GEMINI_MODEL=gemini-3.5-flash-lite
+
+# InterviewMate AI
+## Benchmark Testing & Experiment Log
+
+**Project:** An Adaptive Mock Interview and Feedback System Using Prompt Engineering  
+**Testing component:** Gemini-powered answer evaluation  
+**Benchmark size:** 18 test cases  
+**Evaluation rubric:** 4 criteria, each scored from 0–5  
+**Maximum score:** 20 per test case
+
+---
+
+## 1. Objective
+
+The objective of this experiment was to evaluate the ability of InterviewMate AI to assess technical interview answers and generate meaningful, structured feedback.
+
+The testing focused on whether the system could:
+
+- Identify technically correct and incorrect answers.
+- Differentiate incomplete answers from fundamentally incorrect answers.
+- Evaluate conceptual understanding.
+- Recognize practical applications.
+- Identify misconceptions and missing concepts.
+- Generate relevant follow-up questions.
+- Maintain consistent structured JSON responses.
+
+## 2. Evaluation methodology
+
+The system was tested using 18 manually designed test cases across three technical subjects:
+
+- Data Structures and Algorithms (DSA)
+- Object-Oriented Programming (OOP)
+- Database Management Systems (DBMS)
+
+The test cases included strong, average, weak, partially correct, incomplete, misleading, irrelevant, and misconception-based answers.
+
+Each answer was evaluated using four criteria.
+
+| Evaluation criterion | Maximum score |
+|---|---:|
+| Technical accuracy | 5 |
+| Completeness | 5 |
+| Clarity | 5 |
+| Practical application | 5 |
+| **Total** | **20** |
+
+The evaluation model generated a score and supporting evidence for each criterion, along with strengths, improvements, missing concepts, and a follow-up question.
+
+## 3. Benchmark test results
+
+| Test | Subject | Test scenario | Score |
+|---:|---|---|---:|
+| 1 | DSA | Strong array vs linked list answer | 20/20 |
+| 2 | DSA | Average array vs linked list answer | 18/20 |
+| 3 | DSA | Weak array vs linked list answer | 9/20 |
+| 4 | DSA | Partially correct array vs linked list answer | 14/20 |
+| 5 | DSA | Very short array vs linked list answer | 15/20 |
+| 6 | OOP | Strong encapsulation definition | 19/20 |
+| 7 | OOP | Incorrect inheritance explanation | 13/20 |
+| 8 | DBMS | Strong primary key definition | 19/20 |
+| 9 | OOP | Encapsulation with practical example | 19/20 |
+| 10 | DSA | Two Sum algorithm using a hash map | 19/20 |
+| 11 | DBMS | Reversed DELETE and TRUNCATE definitions | 8/20 |
+| 12 | DBMS | Basic primary key vs foreign key explanation | 18/20 |
+| 13 | OOP | Confusion between polymorphism, inheritance and encapsulation | 7/20 |
+| 14 | DBMS | Correct but incomplete normalization definition | 16/20 |
+| 15 | DSA | Irrelevant answer to binary search complexity question | 6/20 |
+| 16 | OOP | Strong practical encapsulation explanation | 20/20 |
+| 17 | DBMS | Misconception about multiple primary keys | 11/20 |
+| 18 | DSA | Detailed Two Sum algorithm and complexity explanation | 20/20 |
+
+## 4. Quantitative results
+
+**Total marks obtained:** 271 out of 360
+
+**Average score:** 15.06 out of 20
+
+**Average score percentage:** 75.28%
+
+| Score range | Number of test cases |
+|---|---:|
+| 0–5 | 0 |
+| 6–10 | 4 |
+| 11–15 | 4 |
+| 16–20 | 10 |
+| **Total** | **18** |
+
+The results demonstrate that the evaluator awarded higher scores to most technically correct answers and lower scores to answers containing major conceptual misunderstandings.
+
+The percentage represents the average rubric score awarded across these manually designed cases. It should not be interpreted as the model's statistical accuracy or reliability.
+
+## 5. Qualitative observations
+
+### 5.1 Strengths identified
+
+**1. Identification of technical misconceptions**
+
+The evaluator successfully identified several fundamental misunderstandings, including:
+
+- Reversing the definitions of DELETE and TRUNCATE.
+- Confusing inheritance with polymorphism.
+- Confusing encapsulation with polymorphism.
+- Incorrectly claiming that a table can have multiple independent primary key constraints.
+- Confusing binary search with sorting algorithms.
+
+**2. Differentiation between incomplete and incorrect answers**
+
+The evaluator generally distinguished between answers that contained correct but limited information and answers that demonstrated fundamental conceptual misunderstandings.
+
+**3. Practical application evaluation**
+
+The evaluator correctly assessed the BankAccount example used to explain encapsulation and awarded full marks when the candidate demonstrated an appropriate practical application.
+
+**4. Structured feedback generation**
+
+The system consistently generated structured responses containing scores, evidence, strengths, improvements, missing concepts, and follow-up questions.
+
+**5. Follow-up question generation**
+
+The evaluator generally generated relevant questions based on the candidate's initial answer and identified knowledge gaps.
+
+### 5.2 Limitations identified
+
+**1. Over-demanding completeness criteria**
+
+In certain cases, the evaluator expected advanced details that were not necessarily required by the original interview question.
+
+For example, it expected normal forms such as 1NF, 2NF, 3NF and BCNF in response to a basic definition of normalization.
+
+**2. Evidence precision**
+
+Some evaluation explanations referred to concepts or complexity information that the candidate had not explicitly mentioned. This indicates a need to distinguish direct evidence from reasonable technical inference.
+
+**3. Difficulty sensitivity**
+
+The testing did not systematically compare identical questions at Easy, Medium and Hard difficulty levels. Further testing is required to establish how consistently the evaluator adjusts its expectations according to difficulty.
+
+**4. Database-specific variations**
+
+Some SQL behavior differs across database management systems. Future prompt refinements should ensure that database-specific behavior is not presented as universally applicable.
+
+**5. Follow-up question quality**
+
+Although follow-up questions were generally relevant, their difficulty, consistency, and ability to adapt to candidate performance require further systematic evaluation.
+
+## 6. Prompt refinement observations
+
+During development, the evaluation prompt was refined to improve fairness and contextual understanding.
+
+One important refinement concerned the practical application criterion.
+
+The revised instruction specifies that if an interview question is purely conceptual and does not require or invite practical application, the candidate should not lose marks for omitting an example.
+
+This refinement addressed the issue of penalizing candidates for not providing examples when examples were not reasonably expected.
+
+The subsequent benchmark cases demonstrated appropriate scoring for both conceptual questions and questions explicitly requesting practical examples.
+
+Further improvements identified through testing include:
+
+- Making completeness expectations proportional to question wording and difficulty.
+- Improving evidence precision.
+- Avoiding unnecessary expectations for advanced concepts in introductory questions.
+- Qualifying database-specific technical claims.
+
+These observations are documented as potential future improvements rather than changes validated through a second complete benchmark run.
+
+## 7. Conclusion
+
+The 18 benchmark experiments provided an initial qualitative assessment of the answer evaluation component of InterviewMate AI.
+
+The system demonstrated promising behavior in identifying conceptual errors, distinguishing different levels of answer quality, evaluating practical examples, and generating structured feedback.
+
+The experiments also identified areas requiring further improvement, particularly completeness scoring, evidence precision, and difficulty-sensitive evaluation.
+
+The results indicate that prompt engineering and iterative testing helped improve the evaluation behavior of the prototype.
+
+However, the benchmark was manually designed and relatively small. Therefore, the findings should be considered preliminary qualitative evidence rather than formal validation of model accuracy or reliability.
+
+Future work may include a larger benchmark dataset, independent human evaluation, inter-rater comparison, difficulty-level testing, and systematic comparison of prompt versions.
+
+---
+
+**Experiment status:** Completed — 18 benchmark cases reviewed.
+
+**Project:** InterviewMate AI  
+**Testing approach:** Manual qualitative benchmark evaluation  
+**Evaluation model:** Gemini API  
+**Scoring:** Four-dimensional rubric, maximum 20 marks per test case
