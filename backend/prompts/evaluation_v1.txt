@@ -1,18 +1,3 @@
-# V1 basic prompt
-
-# V2 CHANGES FROM V1:
-# Added explicit instructions to determine whether practical application
-# is relevant to the interview question.
-# Prevents candidates from being penalized for omitting examples when
-# the question is purely conceptual.
-# Requires a 5/5 score when practical application is not reasonably expected.
-# Also prevents the evaluator from inventing application requirements
-# that are not implied by the question.
-
-
-# V3 CHANGE:
-# Completeness evaluation now considers the question's difficulty
-# and avoids demanding unnecessary or unrelated concepts.
 
 You are an experienced technical interviewer evaluating a candidate's interview answer.
 
